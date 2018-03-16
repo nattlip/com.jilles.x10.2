@@ -73,7 +73,7 @@ class signal
 //#region define signal
 
 
-        let mySignal = new Homey.Signal('X10', '433');
+       let mySignal = new Homey.Signal('X10', '433');
         mySignal.register()
 
             .then(() => {
@@ -425,199 +425,199 @@ class signal
         };  // endprocessdata
         //#endregion
 
-        ////#region send data
+        //#region send data
 
 
 
-        ////codes the x10 command of a specific device
-        //this.codeX10SendCommand = (houseCodeString, unitCodeString, commandString) => {
+        //codes the x10 command of a specific device
+        this.codeX10SendCommand = (houseCodeString, unitCodeString, commandString) => {
 
-        //    // to remember to  make it lastsendcommand after sending it at end of this void
-        //    this.commandSend.houseCode = houseCodeString
-        //    this.commandSend.unitCode = unitCodeString
-        //    this.commandSend.command = commandString
-
-
-
-        //    let addressByteArray = [];                // byte 1
-        //    let addressByteComplementArray = [];      // byte 2  
-        //    let unitCodeByteArray = [];               // byte 3 
-        //    let unitCodeByteComplementArray = [];     // byte 4
-
-        //    let addressByteString = ''
+            // to remember to  make it lastsendcommand after sending it at end of this void
+            this.commandSend.houseCode = houseCodeString
+            this.commandSend.unitCode = unitCodeString
+            this.commandSend.command = commandString
 
 
 
-        //    let houseCodeNibble = helpFunctions.getKeyByValue(houseCodes, houseCodeString);
+            let addressByteArray = [];                // byte 1
+            let addressByteComplementArray = [];      // byte 2  
+            let unitCodeByteArray = [];               // byte 3 
+            let unitCodeByteComplementArray = [];     // byte 4
 
-        //    if (commandString == 'allon' || commandString == 'alloff' || commandString == 'bright' || commandString == 'dim') {
-        //        //byte 1
-
-        //        lib.log('commandstring unusual   ', commandString);
-        //        addressByteString = houseCodeNibble + '0000';
-        //        addressByteArray = helpFunctions.bitStringToBitArray(addressByteString)
-
-        //        //With a Dim, Bright, All Units On or All Units Off command (bit7 = 1), the unit numbers are not used.
-        //        //The last On or Off command indicates which unit will dim or bright  .
-
-        //        //    Dim = 0x98               bin   1001 1000
-        //        //    Bright = 0x88                  1000 1000
-        //        //    All Lights On = 0x90           1001 0000
-        //        //    All Lights Off= 0x80           1000 0000
-        //        //    unitnumber bits                 2 0 1 
-        //        // bit 7 is =1 then bright or all command
+            let addressByteString = ''
 
 
 
-        //        switch (commandString) {
+            let houseCodeNibble = helpFunctions.getKeyByValue(houseCodes, houseCodeString);
 
-        //            case "allon":
-        //                unitCodeByteArray = [1, 0, 0, 1, 0, 0, 0, 0]
-        //                break;
-        //            case "alloff":
-        //                unitCodeByteArray = [1, 0, 0, 0, 0, 0, 0, 0]
-        //                break;
-        //            case "bright":
-        //                unitCodeByteArray = [1, 0, 0, 0, 1, 0, 0, 0]
-        //                break;
-        //            case "dim":
-        //                unitCodeByteArray = [1, 0, 0, 1, 1, 0, 0, 0]
+            if (commandString == 'allon' || commandString == 'alloff' || commandString == 'bright' || commandString == 'dim') {
+                //byte 1
 
-        //        }
+                lib.log('commandstring unusual   ', commandString);
+                addressByteString = houseCodeNibble + '0000';
+                addressByteArray = helpFunctions.bitStringToBitArray(addressByteString)
 
+                //With a Dim, Bright, All Units On or All Units Off command (bit7 = 1), the unit numbers are not used.
+                //The last On or Off command indicates which unit will dim or bright  .
 
-        //    }
-
-
+                //    Dim = 0x98               bin   1001 1000
+                //    Bright = 0x88                  1000 1000
+                //    All Lights On = 0x90           1001 0000
+                //    All Lights Off= 0x80           1000 0000
+                //    unitnumber bits                 2 0 1 
+                // bit 7 is =1 then bright or all command
 
 
-        //    else if (commandString == 'on' || commandString == 'off') {
+
+                switch (commandString) {
+
+                    case "allon":
+                        unitCodeByteArray = [1, 0, 0, 1, 0, 0, 0, 0]
+                        break;
+                    case "alloff":
+                        unitCodeByteArray = [1, 0, 0, 0, 0, 0, 0, 0]
+                        break;
+                    case "bright":
+                        unitCodeByteArray = [1, 0, 0, 0, 1, 0, 0, 0]
+                        break;
+                    case "dim":
+                        unitCodeByteArray = [1, 0, 0, 1, 1, 0, 0, 0]
+
+                }
+
+
+            }
 
 
 
 
-
-        //        let unitCodeNumber = Number(unitCodeString);
-
-        //        unitCodeNumber -= 1;
-
-        //        unitCodeString = unitCodeNumber.toString();
-
-
-        //        let unitCodeBin = convert.dec2bin(unitCodeString);
-
-        //        //let pad = function (str, max) {
-        //        //     return str.length < max ? pad("0" + str, max) : str;
-        //        // };
-
-        //        function pad(str, max) {
-        //            return str.length < max ? pad("0" + str, max) : str;
-        //        };
-
-
-        //        let unitCodeBinNibble = pad(unitCodeBin, 4);
-
-        //        // lfsb of course   and zero basei ndex
-        //        let unitCodeBit1 = unitCodeBinNibble.slice(0, 1);   // byte 1 2
-        //        let unitCodeBit2 = unitCodeBinNibble.slice(1, 2);   // byte 3 6
-        //        let unitCodeBit3 = unitCodeBinNibble.slice(2, 3);   //        3
-        //        let unitCodeBit4 = unitCodeBinNibble.slice(3, 4);   //        4
+            else if (commandString == 'on' || commandString == 'off') {
 
 
 
 
 
+                let unitCodeNumber = Number(unitCodeString);
 
-        //        addressByteString = houseCodeNibble + '0' + unitCodeBit1 + "00";
-        //        //byte 1
-        //        addressByteArray = helpFunctions.bitStringToBitArray(addressByteString)
+                unitCodeNumber -= 1;
 
-        //        let commandBit = '';
-
-        //        if (commandString == "off") {
-
-        //            commandBit = '1'
-        //        }
-        //        else if (commandString == "on") {
-        //            commandBit = "0"
-        //        }
-
-        //        let unitCodeByteString = ''
-
-        //        //TODO: implement dim
-        //        // unitCodeByte  bit7 = dim = 1 or  units + address lastsend command  no unit then , bit6 = bit2 of unitnumber un , bit5 = 1=off command, 0=on command  ,  bit4 = bit0 un , bit3 = bit1 of un, bit 2,1,0 = 0 
-        //        unitCodeByteString = '0' + unitCodeBit2 + commandBit + unitCodeBit4 + unitCodeBit3 + "000";
+                unitCodeString = unitCodeNumber.toString();
 
 
-        //        //byte 3
-        //        unitCodeByteArray = helpFunctions.bitStringToBitArray(unitCodeByteString);
+                let unitCodeBin = convert.dec2bin(unitCodeString);
+
+                //let pad = function (str, max) {
+                //     return str.length < max ? pad("0" + str, max) : str;
+                // };
+
+                function pad(str, max) {
+                    return str.length < max ? pad("0" + str, max) : str;
+                };
+
+
+                let unitCodeBinNibble = pad(unitCodeBin, 4);
+
+                // lfsb of course   and zero basei ndex
+                let unitCodeBit1 = unitCodeBinNibble.slice(0, 1);   // byte 1 2
+                let unitCodeBit2 = unitCodeBinNibble.slice(1, 2);   // byte 3 6
+                let unitCodeBit3 = unitCodeBinNibble.slice(2, 3);   //        3
+                let unitCodeBit4 = unitCodeBinNibble.slice(3, 4);   //        4
 
 
 
 
 
 
-        //    } // if on or off  
+                addressByteString = houseCodeNibble + '0' + unitCodeBit1 + "00";
+                //byte 1
+                addressByteArray = helpFunctions.bitStringToBitArray(addressByteString)
 
-        //    //byte 2  is complemt of byte 1  so number o f zero = number of 1 as check
-        //    addressByteComplementArray = helpFunctions.ComplementBitArray(addressByteArray);
-        //    //byte 4
-        //    unitCodeByteComplementArray = helpFunctions.ComplementBitArray(unitCodeByteArray);
+                let commandBit = '';
+
+                if (commandString == "off") {
+
+                    commandBit = '1'
+                }
+                else if (commandString == "on") {
+                    commandBit = "0"
+                }
+
+                let unitCodeByteString = ''
+
+                //TODO: implement dim
+                // unitCodeByte  bit7 = dim = 1 or  units + address lastsend command  no unit then , bit6 = bit2 of unitnumber un , bit5 = 1=off command, 0=on command  ,  bit4 = bit0 un , bit3 = bit1 of un, bit 2,1,0 = 0 
+                unitCodeByteString = '0' + unitCodeBit2 + commandBit + unitCodeBit4 + unitCodeBit3 + "000";
+
+
+                //byte 3
+                unitCodeByteArray = helpFunctions.bitStringToBitArray(unitCodeByteString);
 
 
 
-        //    let sendFrameArray = addressByteArray.concat(addressByteComplementArray, unitCodeByteArray, unitCodeByteComplementArray)
-        //    lib.log('1st byte ', addressByteArray);
-        //    lib.log('2d byte ', addressByteComplementArray);
-        //    lib.log('3th byte ', unitCodeByteArray);
-        //    lib.log('4th byte ', unitCodeByteComplementArray);             
+
+
+
+            } // if on or off  
+
+            //byte 2  is complemt of byte 1  so number o f zero = number of 1 as check
+            addressByteComplementArray = helpFunctions.ComplementBitArray(addressByteArray);
+            //byte 4
+            unitCodeByteComplementArray = helpFunctions.ComplementBitArray(unitCodeByteArray);
+
+
+
+            let sendFrameArray = addressByteArray.concat(addressByteComplementArray, unitCodeByteArray, unitCodeByteComplementArray)
+            lib.log('1st byte ', addressByteArray);
+            lib.log('2d byte ', addressByteComplementArray);
+            lib.log('3th byte ', unitCodeByteArray);
+            lib.log('4th byte ', unitCodeByteComplementArray);             
         
 
-        //        return sendFrameArray;         
+                return sendFrameArray;         
 
 
-        //};
+        };
 
         
 
-        //// sends calculated bit array with signal
-        //this.sendBitArray = (frametobesend) => {
+        // sends calculated bit array with signal
+        this.sendBitArray = (frametobesend) => {
 
-        //    //   node js buffer makes 01 from 1 and 00 from 0
-        //    // homey sends same signal with Buffer as Array.
-        //    let buffer = new Buffer(frametobesend);
+            //   node js buffer makes 01 from 1 and 00 from 0
+            // homey sends same signal with Buffer as Array.
+            let buffer = new Buffer(frametobesend);
 
-        //    this.signal.tx(buffer, function (err, result) {
-        //        if (err != null) { lib.log('433Socket: Error:', err) }
-        //        else {
-        //            lib.log('433Socket: result:', result);
-        //            lib.log('433Socket: array.length:', buffer.length);
-        //            lib.log('433Socket: array:   ', buffer);
-        //            counter2 += 1;
-        //            lib.log('433Socket: sendcounter:   ', counter2);
+            mySignal.tx(buffer, function (err, result) {
+                if (err != null) { lib.log('433Socket: Error:', err) }
+                else {
+                    lib.log('433Socket: result:', result);
+                    lib.log('433Socket: array.length:', buffer.length);
+                    lib.log('433Socket: array:   ', buffer);
+                    counter2 += 1;
+                    lib.log('433Socket: sendcounter:   ', counter2);
 
-        //        };
-        //    });
-
-
-
-        //};
+                };
+            });
 
 
 
-        //// 1 = off 0 = on;
-        ////let testcommand = "off";
-        ////let testhousecode = 'H';
-        ////let testunitcode = '1';
-        //// 1 = off 0 = on;
-        ////let testcommand = "on";
+        };
 
-        ////let send =this.codeX10Command(testhousecode, testunitcode, testcommand);
 
-        ////setTimeout(function () {
-        ////   this.sendbitarray(send);
-        ////}, 2000);
-        ////jil_1.sendbitarray(jil_1.codeX10Command(testhousecode, testunitcode, testcommand));
+
+        // 1 = off 0 = on;
+        //let testcommand = "off";
+        //let testhousecode = 'H';
+        //let testunitcode = '1';
+        // 1 = off 0 = on;
+        //let testcommand = "on";
+
+        //let send =this.codeX10Command(testhousecode, testunitcode, testcommand);
+
+        //setTimeout(function () {
+        //   this.sendbitarray(send);
+        //}, 2000);
+        //jil_1.sendbitarray(jil_1.codeX10Command(testhousecode, testunitcode, testcommand));
 
 
 
@@ -625,69 +625,69 @@ class signal
 
 
 
-        //// this is emitted by driverlib to send
-        //this.on('sendCommand', sendCommandFromdriverLib => {
+        // this is emitted by driverlib to send
+        this.processSendCommand = (sendCommand) => {
 
-        //    let houseCodeString = sendCommandFromdriverLib.houseCode
-        //    let unitCodeString = sendCommandFromdriverLib.unitCode
-        //    let commandString = sendCommandFromdriverLib.X10Command
+            let houseCodeString = sendCommand.houseCode
+            let unitCodeString = sendCommand.unitCode
+            let commandString = sendCommand.X10Command
 
-        //    if (commandString == 'allon' || commandString == 'alloff' || commandString == 'bright' || commandString == 'dim') {
+            if (commandString == 'allon' || commandString == 'alloff' || commandString == 'bright' || commandString == 'dim') {
 
 
-        //        if (commandString == 'bright' || commandString == 'dim') {
+                if (commandString == 'bright' || commandString == 'dim') {
 
-        //            // i f lastcommand on off has the same address
-        //            if (this.lastCommandSend.houseCode == houseCodeString && this.lastCommandSend.unitCode == unitCodeString) {
+                    // i f lastcommand on off has the same address
+                    if (this.lastCommandSend.houseCode == houseCodeString && this.lastCommandSend.unitCode == unitCodeString) {
 
-        //                lib.log('else if bright dim  correct last lcs', this.lastCommandSend)
-        //                lib.log('else if bright dim   correct last cs  ', this.commandSend)
+                        lib.log('else if bright dim  correct last lcs', this.lastCommandSend)
+                        lib.log('else if bright dim   correct last cs  ', this.commandSend)
 
-        //                this.sendBitArray(this.codeX10SendCommand(houseCodeString, unitCodeString, commandString))
-        //            }
-        //            // send an extra on or af command with this address
-        //            else {
-        //                this.lastCommandSend.houseCode = houseCodeString;
-        //                this.lastCommandSend.unitCode = unitCodeString
-        //                this.lastCommandSend.command = commandString
-        //                lib.log('else if bright dim  not correct last lcs', this.lastCommandSend)
-        //                lib.log('else if bright dim  not  correct last  cs', this.commandSend)
+                        this.sendBitArray(this.codeX10SendCommand(houseCodeString, unitCodeString, commandString))
+                    }
+                    // send an extra on or af command with this address
+                    else {
+                        this.lastCommandSend.houseCode = houseCodeString;
+                        this.lastCommandSend.unitCode = unitCodeString
+                        this.lastCommandSend.command = commandString
+                        lib.log('else if bright dim  not correct last lcs', this.lastCommandSend)
+                        lib.log('else if bright dim  not  correct last  cs', this.commandSend)
 
-        //                this.sendBitArray(this.codeX10SendCommand(houseCodeString, unitCodeString, "on"))
-        //                lib.log('sending on for dim', houseCodeString, unitCodeString, "on")    
+                        this.sendBitArray(this.codeX10SendCommand(houseCodeString, unitCodeString, "on"))
+                        lib.log('sending on for dim', houseCodeString, unitCodeString, "on")    
 
-        //                   setTimeout( () => {
-        //                       this.sendBitArray(this.codeX10SendCommand(houseCodeString, unitCodeString, commandString))
-        //                 }, 500);
+                           setTimeout( () => {
+                               this.sendBitArray(this.codeX10SendCommand(houseCodeString, unitCodeString, commandString))
+                         }, 500);
                                        
                         
 
-        //            }
+                    }
 
-        //        }
-        //    }
-        //        else if (commandString == 'on' || commandString == 'off') {
+                }
+            }
+                else if (commandString == 'on' || commandString == 'off') {
 
 
-        //            // store last on of command               for all and dim 
-        //            lib.log('else if on off before last = current  lcs ', this.lastCommandSend)
+                    // store last on of command               for all and dim 
+                    lib.log('else if on off before last = current  lcs ', this.lastCommandSend)
 
-        //            this.lastCommandSend.houseCode = houseCodeString;
-        //            this.lastCommandSend.unitCode = unitCodeString
-        //            this.lastCommandSend.command = commandString
+                    this.lastCommandSend.houseCode = houseCodeString;
+                    this.lastCommandSend.unitCode = unitCodeString
+                    this.lastCommandSend.command = commandString
 
-        //            lib.log('else if on off lcs ', this.lastCommandSend)
-        //            lib.log('else if on off cs ', this.commandSend)
+                    lib.log('else if on off lcs ', this.lastCommandSend)
+                    lib.log('else if on off cs ', this.commandSend)
 
-        //            this.sendBitArray(this.codeX10SendCommand(houseCodeString, unitCodeString, commandString))
+                    this.sendBitArray(this.codeX10SendCommand(houseCodeString, unitCodeString, commandString))
 
-        //        }
+                }
             
 
-        //})  // on send
+        }  // processSendCommand
 
 
-        //  //#endregion
+          //#endregion
 
 
     } // end constructor

@@ -19,8 +19,33 @@
   ],
 
   "drivers": [
-  
+
+    {
+      "id": "X10",
+      "name": {
+        "en": "X10",
+        "nl": "X10"
+      },
+      "class": "other",
+      "capabilities": [ "alarm_motion", "alarm_night", "onoff", "dim" ],
+      "images": {
+        "large": "drivers/X10/assets/images/large.jpg",
+        "small": "drivers/X10/assets/images/small.jpg"
+      },
+      "pair": [
+
+        {
+          "id": "showoptions"
+
+        },
+        {
+          "id": "choose_slave",
+          "template": "choose_slave"
+        }
+      ]
+    }
   ],
+
   "signals": {
     "433": {
       "X10": {
@@ -39,8 +64,171 @@
       }
 
     }
-  }
+  },
 
+  "flow": {
+    "triggers": [
+      {
+        "id": "Received_X10_command",
+        "title": {
+          "en": "Recieved X10 command"
+        },
+        "args": [
+          {
+            "name": "houseCode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "A",
+                "label": { "en": "A" }
+              },
+              {
+                "id": "B",
+                "label": { "en": "B" }
+              },
+              {
+                "id": "C",
+                "label": { "en": "C" }
+              },
+              {
+                "id": "D",
+                "label": { "en": "D" }
+              },
+              {
+                "id": "E",
+                "label": { "en": "E" }
+              },
+              {
+                "id": "F",
+                "label": { "en": "F" }
+              },
+              {
+                "id": "G",
+                "label": { "en": "G" }
+              },
+              {
+                "id": "H",
+                "label": { "en": "H" }
+              },
+              {
+                "id": "I",
+                "label": { "en": "I" }
+              },
+              {
+                "id": "J",
+                "label": { "en": "J" }
+              },
+              {
+                "id": "K",
+                "label": { "en": "K" }
+              },
+              {
+                "id": "L",
+                "label": { "en": "L" }
+              },
+              {
+                "id": "M",
+                "label": { "en": "M" }
+              },
+              {
+                "id": "N",
+                "label": { "en": "N" }
+              },
+              {
+                "id": "O",
+                "label": { "en": "O" }
+              },
+              {
+                "id": "P",
+                "label": { "en": "P" }
+              }
+            ]
+          },
+          {
+            "name": "unitCode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "1",
+                "label": { "en": "1" }
+              },
+              {
+                "id": "2",
+                "label": { "en": "2" }
+              },
+              {
+                "id": "3",
+                "label": { "en": "3" }
+              },
+              {
+                "id": "4",
+                "label": { "en": "4" }
+              },
+              {
+                "id": "5",
+                "label": { "en": "5" }
+              },
+              {
+                "id": "6",
+                "label": { "en": "6" }
+              },
+              {
+                "id": "8",
+                "label": { "en": "8" }
+              },
+              {
+                "id": "9",
+                "label": { "en": "9" }
+              },
+              {
+                "id": "10",
+                "label": { "en": "10" }
+              },
+              {
+                "id": "11",
+                "label": { "en": "11" }
+              },
+              {
+                "id": "12",
+                "label": { "en": "12" }
+              },
+              {
+                "id": "13",
+                "label": { "en": "13" }
+              },
+              {
+                "id": "14",
+                "label": { "en": "14" }
+              },
+              {
+                "id": "15",
+                "label": { "en": "15" }
+              },
+              {
+                "id": "16",
+                "label": { "en": "16" }
+              }
+            ]
+          },
+          {
+            "name": "command",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "on",
+                "label": { "en": "on" }
+              },
+              {
+                "id": "off",
+                "label": { "en": "off" }
+              }
+            ]
+          }
+
+        ]
+      }
+    ]
+  }
 
 
 

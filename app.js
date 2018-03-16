@@ -5,10 +5,155 @@ const signal = require('./signalx10.js');
 
 
 class MyApp extends Homey.App {
+
+
+    
+    
+
+
+
+
 	
 	onInit() {
 		
         this.log('MyApp is running...');
+
+        this.signal = require('./signalx10.js');
+
+        this.X10DeviceArray =
+            [
+                [1, 'MS13E'],
+                [2, 'OnOff'],
+                [3, 'Dim'],
+                [4, 'All'] // for command all of or on
+            ]
+
+        this.X10DeviceMap = new Map(this.X10DeviceArray)
+
+        this.virtualDeviceClassArray =
+            [
+                [1, 'none'],
+                [2, 'light'],
+                [3, 'kettle'],
+                [4, 'amplifier'],
+                [5, 'heater'],
+                [6, 'fan'],// for command all of or on
+                [7, 'speaker']
+            ]
+
+
+        this.virtualDeviceClassMap = new Map(this.virtualDeviceClassArray)
+
+
+
+        this.rfxcomDeviceTypes = {
+            "generic":  // as template
+                {
+                    data: {
+                        //{ type: null, index: null }, dfor more devicetypes per driver visonic motion sensor or doorsensor 
+                        id: null,             // homey id 
+                        houseCode: null,
+                        unitCode: null,
+                        protocol: null,
+                        type: null,
+                    },
+
+                    driver: null,
+
+                    name: null,            //   rfxcom and old id 
+                    rx: [], // { type: null, index: null } of rxtx where signals are received from for this device  the device id of a rxtx is its ip
+                    tx: [], // { type: null, index: null } of rxtx where franes are send to for this device               
+                    capabilities: [],
+                    capability: {},
+                    icon: null,
+                    settings: null
+                },
+
+         
+            "MS13E":
+                {
+                    data: {
+                        id: null,             // homey id 
+                        houseCode: null,
+                        unitCode: null,
+                        protocol: 'X10', //  visonic , x10 , oregon , etc klika elro etc ndlers 
+                        type: "MS13E"
+                    },
+                    driver: `X10`,
+                    name: null,    // type of device eg visonicdoorsensor
+                    rx: [], //  //{ type: null, index: null }of rxtx where signals are received from for this device
+                    tx: [], // { type: null, index: null } of rxtx where franes are send to for this device               
+                    capabilities: ["alarm_motion", "alarm_night"],
+                    capability: {
+                        alarm_motion: false,
+                        alarm_night: false
+                    },   // onoff dim temp etc as json  object of capabilities
+                    icon: null,
+                    settings: null
+                },
+
+            "OnOff":
+                {
+                    data: {
+                        id: null,             // homey id 
+                        houseCode: null,
+                        unitCode: null,
+                        protocol: 'X10', //  visonic , x10 , oregon , etc klika elro etc ndlers 
+                        type: "OnOff",           // type of device eg visonicdoorsensor
+                    },
+
+                    driver: "X10",
+                    name: null,
+                    rx: [], // { type: null, index: null } of rxtx where signals are received from for this device
+                    tx: [], // { type: null, index: null } of rxtx where franes are send to for this device 
+                    capabilities: ['onoff'],
+                    capability: { onoff: false }   // onoff dim temp etc as json  object of capabilities
+                    , icon: null,
+                    settings: null
+                },
+
+            "Dim":
+                {
+                    data: {
+                        id: null,             // homey id 
+                        houseCode: null,
+                        unitCode: null,
+                        protocol: 'X10', //  visonic , x10 , oregon , etc klika elro etc ndlers 
+                        type: "Dim",      // type of device eg visonicdoorsensor 
+                    },
+                    driver: "X10",
+                    name: null,
+                    rx: [], // { type: null, index: null } of rxtx where signals are received from for this device
+                    tx: [], // { type: null, index: null } of rxtx where franes are send to for this device 
+                    capabilities: ['onoff', 'dim'],
+                    capability: {
+                        onoff: false,
+                        dim: 0
+                    },                // onoff dim temp etc as json  object of capabilities
+                    icon: null,
+                    settings: null
+                }
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //let mySignal = new Homey.Signal( 'X10', '433');
