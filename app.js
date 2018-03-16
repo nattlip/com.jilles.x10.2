@@ -14,7 +14,10 @@ class MyApp extends Homey.App {
 
 
 	
-	onInit() {
+    onInit() {
+
+
+        this.app = 'X10'
 		
         this.log('MyApp is running...');
 
@@ -141,16 +144,7 @@ class MyApp extends Homey.App {
         }
 
 
-
-
-
-
-
-
-
-
-
-
+        
 
 
 
@@ -184,7 +178,38 @@ class MyApp extends Homey.App {
         //    .catch(this.error)
 
 
+        this.receivedX10Trigger = new Homey.FlowCardTrigger('Received_X10_command');
+        this.receivedX10Trigger
+            .registerRunListener((args, state) => {
 
+                console.log(args); // { 'location': 'New York' }, this is the user input
+                console.log(state); // { 'location': 'Amsterdam' }, this is the state parameter, as passed in trigger()
+
+                // If true, this flow should run
+                return Promise.resolve(args.houseCode === state.houseCode && args.unitCode === state.unitCode &&
+                    args.command === state.command);
+
+            })
+            .register()
+
+        this.triggerflow2 = (result) => {
+
+            let tokens = {}
+
+            if (result.command == true) { result.command = 'on' }  // 'on'  'off'
+            else if (result.command == false) { result.command = 'off' }
+
+            let state = {
+                'houseCode': result.houseCode,
+                'unitCode': result.unitCode,
+                'command': result.command
+            }
+
+            this.receivedX10Trigger.trigger(tokens, state)
+                .then(this.log)
+                .catch(this.error)
+
+        }
 
 
 
@@ -194,7 +219,7 @@ class MyApp extends Homey.App {
 
 
 		
-    }
+    }// onint
 
   
 

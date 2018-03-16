@@ -12,6 +12,9 @@ class X10Driver extends Homey.Driver {//extends masterDriver {
 
     onInit() {
 
+        this.devices = this.getDevices()
+        this.log(`devices from getdevices  ${this.devices} `)
+
        this.scriptfunction = `
 
    function makehtml()

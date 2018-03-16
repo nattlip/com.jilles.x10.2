@@ -395,7 +395,36 @@ class signal
                 }
             }
 
+            let driver = Homey.ManagerDrivers.getDriver('X10')
+            let type = ''
+            let deviceData = helpFunctions.GetDEviceDatafromHouseAndUnitCode(driver.devicesData, houseCode, unitCodeString)
 
+            lib.log(' found deviceData ', deviceData)
+
+
+
+            let capability = ''
+
+            if (deviceData) {
+                lib.log(' found devicedata    ', deviceData);
+                type = deviceData.type
+                let device = driver.getDevice(deviceData)
+
+
+
+                if (!type) { type = 'UK' }
+                else if (type == 'MS13E') {
+                    if (deviceData.unitCode == unitCodeString) { capability = "alarm_motion" }
+                    else if (Number(deviceData.unitCode) == Number(unitCodeString) - 1) { capability = "alarm_night" }
+
+                }
+
+                device.setCapabilityValue(capability, homeyCommand)
+                lib.log(`this.setCapabilityValue  ${capability} ${homeyCommand} `);
+                //  lib.log( ` ${ } ` );
+
+
+            }
 
 
 
@@ -404,13 +433,19 @@ class signal
             if (typeof result !== "undefined") {
                 // driverMS13E.updateCapabilitiesHomeyDevice('X10','MS13E',homeyDevice.capabilities, homeyDevice,"alarm_motion",command);
                 //appReference.processResult(result)
-                let frame = 'this is signal'
-              //  this.emit('signal', frame)
 
 
 
 
-             //   this.emit('receivedX10Signal', result)
+
+
+
+
+
+
+
+
+
 
 
 

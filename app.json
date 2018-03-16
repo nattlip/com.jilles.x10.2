@@ -2,10 +2,10 @@
   "id": "com.jilles.x10.2",
   "sdk": 2,
   "name": {
-    "en": "JillesRf"
+    "en": "X10.2"
   },
   "description": {
-    "en": "to test rf in sdk2"
+    "en": "X10  sdk2"
   },
   "category": "appliances",
   "version": "0.0.1",
