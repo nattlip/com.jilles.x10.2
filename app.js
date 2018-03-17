@@ -1,7 +1,6 @@
 'use strict';
 
 const Homey = require('homey');
-const signal = require('./signalx10.js');
 
 
 class MyApp extends Homey.App {
@@ -21,7 +20,7 @@ class MyApp extends Homey.App {
 		
         this.log('MyApp is running...');
 
-        this.signal = require('./signalx10.js');
+        this.signalX10 = require('./lib/homeySignal/signalx10.js');
 
         this.X10DeviceArray =
             [
