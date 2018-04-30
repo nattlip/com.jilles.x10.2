@@ -14,6 +14,10 @@
     "name": "Jilles Miedema",
     "email": "nattelip@hotmail.com"
   },
+  "images": {
+    "large": "./assets/images/large.png",
+    "small": "./assets/images/small.png"
+  },
   "permissions": [
     "homey:wireless:433"
   ],
