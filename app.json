@@ -29,8 +29,8 @@
       "class": "other",
       "capabilities": [ "alarm_motion", "alarm_night", "onoff", "dim" ],
       "images": {
-        "large": "drivers/X10/assets/images/large.jpg",
-        "small": "drivers/X10/assets/images/small.jpg"
+        "large": "drivers/X10/assets/images/large.png",
+        "small": "drivers/X10/assets/images/small.png"
       },
       "pair": [
 
