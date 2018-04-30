@@ -21,7 +21,11 @@
   "permissions": [
     "homey:wireless:433"
   ],
+  "bugs": {
+    "url": "https: //github.com/nattlip/com.jilles.x10.2/issues"
+  },
 
+  "athomForumDiscussionId": 5111,
   "drivers": [
 
     {
