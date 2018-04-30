@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+
+
+<script type="text/javascript">
+
+
+
+    //http://www.electrictoolbox.com/javascript-add-options-html-select/
+    if (document && document.createElement) {
+
+
+           
+
+
+
+
+
+
+            Homey.on('pair', data => {
+
+                Homey.addDevice({
+                    // the data object should contain only unique properties for the device. So a MAC address is good, an IP address is bad (can change over time)
+                    data: {
+                        id: 'appDevice'
+                    },
+
+                    // the name for this device,
+                    name: 'X10AppDevice',
+
+                    // initial settings (optional)
+                    settings: { },
+
+                    // initial store
+                    store: { 'x': 'y' }
+                }, function (err, result) {
+                    if (err) return Homey.alert(err);
+                    Homey.done();
+                });
+
+
+            })
+
+
+
+
+
+
+
+
+
+
+
+     
+
+       
+
+
+
+
+
+
+    
+
+
+
+
+
+    };  // if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+

@@ -1,19 +1,49 @@
 'use strict';
 
 const Homey = require('homey');
-
+const util = require('util');
 
 class MyApp extends Homey.App {
 
-
-    
-    
-
-
-
-
+     
 	
     onInit() {
+
+
+
+
+        this.SetHomeyRfX10On = false
+        this.setHomeyOregonRfOn = false
+
+        this.setPlugwiseOn = false
+        this.ipPlugwise = ``
+        this.portPlugwise = ``
+
+        this.setProliphixOn = false
+        this.ipProliphix = ``
+        this.portProliphix = ``
+        this.settings = {}
+
+        this.log(`app  setings before retrieving them ${util.inspect(this.settings)}`);
+        this.log(`app deves = 1  ${Homey.ManagerDrivers.getDriver("app").getDevices()}`);
+        this.log(`app deves = 1  ${Homey.ManagerDrivers.getDriver('app').getDevices().length == 1}`);
+
+
+        //if (Homey.ManagerDrivers.getDriver('app').getDevices().length == 1) {
+
+        //    this.settings = Homey.ManagerDrivers.getDriver('app').getDevices()[0].getSettings()
+
+        //    this.log(`app  setings after ${util.inspect(this.settings)}`);
+
+
+
+
+
+        //}
+
+
+
+
 
 
         this.app = 'X10'
@@ -142,39 +172,13 @@ class MyApp extends Homey.App {
 
         }
 
-
-        
-
+             
 
 
 
 
-        //let mySignal = new Homey.Signal( 'X10', '433');
-        //mySignal.register()
 
-        //    .then(() => {
-
-        //        // on a payload event
-        //        mySignal.on('payload',  (payload, first) => {
-        //            this.log('received from a device:', payload, 'isRepetition:', !first);
-        //        });
-
-        //        // on a command event
-        //        //mySignal.on('cmd', function (cmdId, first) {
-        //        //    console.log('received a command from a device:', cmdId, 'isRepetition:', !first);
-        //        //});
-
-        //        // transmit the bits 01011001
-        //      //  mySignal.tx([0, 1, 0, 1, 1, 0, 0, 1], this.log);
-
-        //        // transmit predefined command
-        //        //mySignal.cmd('ONOFF', this.log);
-
-        //        // unregister the signal
-        //      //  mySignal.unregister(this.log);
-
-        //    })
-        //    .catch(this.error)
+       
 
 
         this.receivedX10Trigger = new Homey.FlowCardTrigger('Received_X10_command');
