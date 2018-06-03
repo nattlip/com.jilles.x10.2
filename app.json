@@ -28,16 +28,16 @@
   "athomForumDiscussionId": 5111,
   "drivers": [
     {
-      "id": "app",
+      "id": "X10",
       "name": {
-        "en": "app",
-        "nl": "app"
+        "en": "X10",
+        "nl": "X10"
       },
       "class": "other",
       "capabilities": [],
       "images": {
-        "large": "drivers/app/assets/images/large.jpg",
-        "small": "drivers/app/assets/images/small.jpg"
+        "large": "drivers/X10/assets/images/large.jpg",
+        "small": "drivers/X10/assets/images/small.jpg"
       },
       "pair": [
 
