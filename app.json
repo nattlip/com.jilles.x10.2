@@ -1,5 +1,5 @@
 {
-  "id": "com.jilles.x10.2",
+  "id": "com.jilles.x10",
   "sdk": 2,
   "name": {
     "en": "X10.2"
@@ -8,7 +8,7 @@
     "en": "X10  sdk2"
   },
   "category": "appliances",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Jilles Miedema",
@@ -27,6 +27,144 @@
 
   "athomForumDiscussionId": 5111,
   "drivers": [
+    {
+      "id": "app",
+      "name": {
+        "en": "app",
+        "nl": "app"
+      },
+      "class": "other",
+      "capabilities": [],
+      "images": {
+        "large": "drivers/app/assets/images/large.jpg",
+        "small": "drivers/app/assets/images/small.jpg"
+      },
+      "pair": [
+
+        {
+          "id": "startandend"
+
+        }
+      ],
+
+      "settings": [
+
+
+        {
+          "type": "group",
+          "label": { "en": "app settings" },
+          "children": [
+
+
+            {
+              "type": "group",
+              "label": { "en": "X10 settings" },
+              "children": [
+                {
+                  "id": "setHomeyRfX10On",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "also receive and send X10 Signals via Homey Rf"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": { "en": "Oregon settings" },
+              "children": [
+                {
+                  "id": "setHomeyOregonRfOn",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "also receive and process Oregon Signals via Homey Rf"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": { "en": "Plugwise settings" },
+              "children": [
+                {
+                  "id": "setPlugwiseOn",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "make contact with plugwise source server"
+                  }
+                },
+                {
+                  "id": "ipPlugwise",
+                  "type": "text",
+                  "label": {
+                    "en": "ip of plugwise source server"
+                  },
+                  "value": "ipPlugwise",
+                  "hint": {
+                    "en": "ip of plugwise source server"
+                  }
+                },
+                {
+                  "id": "portPlugwise",
+                  "type": "text",
+                  "label": {
+                    "en": "port of plugwise source server"
+                  },
+                  "value": "portPlugwise",
+                  "hint": {
+                    "en": "port of plugwise source server"
+                  }
+                }
+              ]
+            },
+
+
+            {
+              "type": "group",
+              "label": { "en": "Proliphix settings" },
+              "children": [
+                {
+                  "id": "setProliphixOn",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "make contact with proliphix thermostat"
+                  }
+                },
+                {
+                  "id": "ipProliphix",
+                  "type": "text",
+                  "label": {
+                    "en": "ip of Proliphix source server"
+                  },
+                  "value": "ipProliphix",
+                  "hint": {
+                    "en": "ip of Proliphix thermostat"
+                  }
+                },
+                {
+                  "id": "portProliphix",
+                  "type": "text",
+                  "label": {
+                    "en": "port of Proliphix thermostat"
+                  },
+                  "value": "portProliphix",
+                  "hint": {
+                    "en": "port of Proliphix thermostat"
+                  }
+                }
+              ]
+            }
+
+
+          ]
+
+        }
+      ]
+    },
 
     {
       "id": "X10",
