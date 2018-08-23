@@ -37,6 +37,8 @@ programming it was an excercise for Ecma6 and referencing
 
 04-06-2018 bug fixed that prevented device icons to be shown
 
+23-08-2018  added new forum id
+
 [![Paypal donate][pp-donate-image]][pp-donate-link]
 [pp-donate-link]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=42UGL52J4KPZE
 [pp-donate-image]: https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif

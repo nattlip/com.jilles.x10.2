@@ -8,7 +8,7 @@
     "en": "X10  sdk2"
   },
   "category": "appliances",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Jilles Miedema",
@@ -26,8 +26,11 @@
   },
 
   "athomForumDiscussionId": 5111,
+
+  "homeyCommunityTopicId": 140,
+
   "drivers": [
-           {
+    {
       "id": "X10",
       "name": {
         "en": "X10",
