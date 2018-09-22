@@ -34,6 +34,9 @@ programming it was an excercise for Ecma6 and referencing
 19-06-2017 changed interval and sensitivity to new standards of homey 433 signal defenition , was changed with no notice or explanation 
 
 06-06-2018  SDK2 version 2.0.0 admitted to app store as beta
+            added virual device classes , so a socket dimmabler or not  can be interpreted as a light by Homey
+			so updating to v2 of this app , you need to repair all devices 
+			added all on and off as a x10 command 
 
 04-06-2018 bug fixed that prevented device icons to be shown
 
