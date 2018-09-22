@@ -37,8 +37,11 @@ programming it was an excercise for Ecma6 and referencing
 
 04-06-2018 bug fixed that prevented device icons to be shown
 
+23-08-2018  added new forum id
 
+21-09-2018 v2 version app becomes stable, all devices must be repaired is you come from version 0.5.8170
 
+22-09-2018  fixed a bug for correct github issue link
 
 [![Paypal donate][pp-donate-image]][pp-donate-link]
 [pp-donate-link]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=42UGL52J4KPZE

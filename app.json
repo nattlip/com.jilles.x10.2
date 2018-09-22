@@ -8,7 +8,7 @@
     "en": "X10  sdk2"
   },
   "category": "appliances",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Jilles Miedema",
@@ -22,8 +22,8 @@
     "homey:wireless:433"
   ],
   "bugs": {
-    "url": "https: //github.com/nattlip/com.jilles.x10.2/issues"
-  },
+    "url": "https://github.com/nattlip/com.jilles.x10.2/issues"
+      },
 
   "athomForumDiscussionId": 5111,
 
