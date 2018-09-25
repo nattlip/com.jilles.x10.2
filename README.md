@@ -44,7 +44,9 @@ programming it was an excercise for Ecma6 and referencing
 
 21-09-2018 v2 version app becomes stable, all devices must be repaired if you come from stable version 0.5.8170
 
-22-09-2018  fixed a bug for correct github issue link
+22-09-2018  2.0.3 fixed a bug for correct github issue link
+
+25-09-2018 2.0.4 fixed the flows and ms13e updating the capabilities in the device
 
 [![Paypal donate][pp-donate-image]][pp-donate-link]
 [pp-donate-link]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=42UGL52J4KPZE

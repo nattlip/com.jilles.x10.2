@@ -267,7 +267,7 @@ makehtml();
 
               
 
-               if (Homey.app.rfxcomDeviceTypes[type] != null) {
+               if (Homey.app.rfxcomDeviceTypes[type] !== null) {
                    // Check the checksum before we start decoding
                    capabilities = Homey.app.rfxcomDeviceTypes[type].capabilities
                    protocol = Homey.app.rfxcomDeviceTypes[type].data.protocol
