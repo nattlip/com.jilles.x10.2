@@ -8,7 +8,7 @@
     "en": "X10  sdk2"
   },
   "category": "appliances",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "compatibility": ">=1.5.0",
   "author": {
     "name": "Jilles Miedema",
