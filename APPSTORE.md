@@ -48,6 +48,10 @@ programming it was an excercise for Ecma6 and referencing
 
 25-09-2018 2.0.4 fixed the flows and ms13e updating the capabilities in the device
 
+28-09-2018 2.0.5 fixed bug
+
+30-09-20128 2.0.6 added sentry logging
+
 [![Paypal donate][pp-donate-image]][pp-donate-link]
 [pp-donate-link]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=42UGL52J4KPZE
 [pp-donate-image]: https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif
