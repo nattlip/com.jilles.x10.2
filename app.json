@@ -8,8 +8,8 @@
     "en": "X10  sdk2"
   },
   "category": [ "appliances", "lights" ],
-  "version": "2.0.6",
-  "compatibility": ">=1.5.0",
+  "version": "2.0.7",
+  "compatibility": ">=2.0.0",
   "author": {
     "name": "Jilles Miedema",
     "email": "nattelip@hotmail.com"
@@ -49,7 +49,7 @@
       "pair": [
 
         {
-          "id": "showoptions"
+          "id": "choosex10"
 
         },
         {

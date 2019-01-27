@@ -212,6 +212,25 @@ makehtml();
            socket.emit('sendParametersTypes', { 'sendParametersTypes': this.sendParametersTypes });
            socket.emit('sendParametersVirtualDeviceClasses', { 'sendParametersVirtualDeviceClasses': this.sendParametersVirtualDeviceClasses });
 
+           socket.on('showView', (viewId, callback) => {
+               callback();
+               this.log('viewId    ', viewId);
+               if (viewId === 'choosex10') {
+                   socket.emit('sendParametersTypes', { 'sendParametersTypes': this.sendParametersTypes });
+                   socket.emit('sendParametersVirtualDeviceClasses', { 'sendParametersVirtualDeviceClasses': this.sendParametersVirtualDeviceClasses });
+               }
+           });
+
+
+
+
+
+
+
+
+
+
+
            socket.on("saveUnitCode", data => {
 
                this.log('x10 pairing device unitcode    ', data.unitCode);
